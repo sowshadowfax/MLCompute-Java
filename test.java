@@ -48,6 +48,7 @@ public class test {
         for (int i = 0; i < x_t2.length; i++)
             System.out.println("Predicted: " + y_t2[i]); */
         
+        /*
         // Demo 3: Linear Regressor
         double[][] x3 = {{1, 2}, {3, 4}, {5, 6}, {7, 8}, {9, 10}};
         double[] y3 = {3, 7, 11, 15, 19};
@@ -66,8 +67,27 @@ public class test {
         double[] y_t3 = lir.predict(x_t3);
 
         for (int i = 0; i < x_t3.length; i++)
-            System.out.println("Predicted: " + y_t3[i]); 
+            System.out.println("Predicted: " + y_t3[i]); */
         
+        // Demo 4: Simple Linear Classifier
+        double[] x4 = {1, 2, 3, 4, 5};
+        double[] y4 = {0, 0, 1, 1, 1};
+
+        SimpleLinearClassifier slc = new SimpleLinearClassifier();
+        slc.initialize(b, x4, y4, lr);
+
+        // Training loop
+        for (int i = 0; i < epochs; i++) {
+            slc.forwardPass();
+            slc.simpleGradient();
+            System.out.println("Loss: " + slc.squaredError());
+        }
+
+        double[] x_t4 = {0, 1, 2, 3, 4, 5};
+        int[] y_t4 = slc.predict(x_t4);
+
+        for (int i = 0; i < x_t4.length; i++)
+            System.out.println("Predicted: " + y_t4[i]);
         
     }
 }
