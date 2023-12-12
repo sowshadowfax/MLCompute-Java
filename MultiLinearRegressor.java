@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class MultiLinearRegressor {
     
-        // Declaring variables for the equation y = w1x1 + w2x2 + ... + wnxn + b
+        // Declaring variables for the equation y = w1x1 + w2x1 + ... + wnx1 + b
         double[] w = {};
         double[] x = {};
         double b = 0.0;
