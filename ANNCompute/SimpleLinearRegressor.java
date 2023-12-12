@@ -19,10 +19,39 @@ public class SimpleLinearRegressor {
     public void initialize(double b, double[] x, double[] y, double lr) {
         Random rand = new Random();
         this.w = rand.nextDouble();
+
+        try {
         this.b = b;
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Caught Error while initializing bias in SimpleLinearRegressor");
+            return;
+        }
+
+        try {
         this.x = x;
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Caught Error while initializing x in SimpleLinearRegressor");
+            return;
+        }
+
+        try {
         this.y = y;
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Caught Error while initializing y in SimpleLinearRegressor");
+            return;
+        }
+
+        try {
         this.lr = lr;
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Caught Error while initializing learning rate in SimpleLinearRegressor");
+            return;
+        }
+        
         this.y_pred = new double[y.length];
     }
 
@@ -30,7 +59,16 @@ public class SimpleLinearRegressor {
     public double squaredError() {
         this.loss = 0; // Reset loss
         for (int i = 0; i < this.x.length; i++) {
+            try {
             this.loss += Math.pow((this.y[i] - this.y_pred[i]), 2);
+            } catch (Exception e) {
+                System.out.println(e);
+                if(this.y.length != this.y_pred.length)
+                    System.out.println("Caught Error while calculating loss in SimpleLinearRegressor: Check dimensions of y and y_pred");
+                else
+                    System.out.println("Caught Error while calculating loss in SimpleLinearRegressor");
+                return 0.0;
+            }
         }
         return this.loss;
     }
@@ -40,9 +78,18 @@ public class SimpleLinearRegressor {
         this.grad = 0.0; // Reset gradient
         double partialDerivativeSum = 0.0; // For the formula Sigma(i=1 to n) (y_actual - y_pred) * x, for the partial derivative of SE
         for (int i = 0; i < x.length; i++)
+            try {
             partialDerivativeSum += (y[i] - y_pred[i]) * x[i];
-        double partialDerivative = -1.0 / x.length * partialDerivativeSum;
+            } catch (Exception e){
+                System.out.println(e);
+                if(this.y.length != this.y_pred.length)
+                    System.out.println("Caught Error while calculating simple gradient in SimpleLinearRegressor: Check dimensions of y and y_pred");
+                else
+                    System.out.println("Caught Error while calculating simple gradient in SimpleLinearRegressor");
+                return;
+            }
 
+        double partialDerivative = -1.0 / x.length * partialDerivativeSum;
         this.w = this.w - (this.lr * partialDerivative);
     }
 
