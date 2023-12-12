@@ -1,3 +1,4 @@
+package ANNCompute;
 import java.util.Random;
 
 public class MultiLinearRegressor {
@@ -15,7 +16,7 @@ public class MultiLinearRegressor {
         double loss = 0.0;
     
         // Initializes the weights randomly and assigns bias
-        public void initialize(double b, double[] x, double[] y) {
+        public void initialize(double b, double[] x, double[] y, double lr) {
             Random rand = new Random();
             this.w = new double[x.length];
             for (int i = 0; i < this.w.length; i++)
@@ -23,6 +24,7 @@ public class MultiLinearRegressor {
             this.b = b;
             this.x = x;
             this.y = y;
+            this.lr = lr;
             this.y_pred = new double[y.length];
         }
     
@@ -78,29 +80,4 @@ public class MultiLinearRegressor {
             return this.w;
         }
 
-        public static void main(String[] args){
-            // Training data
-            double[] x = {1, 2, 3, 4, 5};
-            double[] y = {2, 4, 6, 8, 10};
-
-            // Test data
-            double[] x_t = {6, 7, 8, 9, 10};
-            double[] y_t = {12, 14, 16, 18, 20};
-
-            // Initializing the regressor
-            MultiLinearRegressor regressor = new MultiLinearRegressor();
-            regressor.initialize(0.0, x, y);
-
-            // Training the regressor
-            for (int i = 0; i < 1000; i++) {
-                regressor.forwardPass();
-                regressor.simpleGradient();
-                System.out.println("Loss: " + regressor.squaredError());
-            }
-
-            // Predicting
-            double[] y_pred = regressor.predict(x_t);
-            for (int i = 0; i < y_pred.length; i++)
-                System.out.println("Predicted: " + y_pred[i] + " Actual: " + y_t[i]);
-        }
 }

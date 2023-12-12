@@ -1,3 +1,4 @@
+package ANNCompute;
 import java.util.Random;
 
 public class SimpleLinearRegressor {
@@ -15,12 +16,13 @@ public class SimpleLinearRegressor {
     double loss = 0.0;
 
     // Initializes the weights randomly and assigns bias
-    public void initialize(double b, double[] x, double[] y) {
+    public void initialize(double b, double[] x, double[] y, double lr) {
         Random rand = new Random();
         this.w = rand.nextDouble();
         this.b = b;
         this.x = x;
         this.y = y;
+        this.lr = lr;
         this.y_pred = new double[y.length];
     }
 
@@ -62,26 +64,5 @@ public class SimpleLinearRegressor {
     public double fetchWeights(){
         return this.w;
     }
-
-    public static void main(String[] args) {
-        // Sample data:
-        double[] x_train = {1, 2, 3, 4, 5};
-        double[] y_train = {1, 2, 3, 4, 5};
-        double bias = 0;
-        int epochs = 200;
-
-        SimpleLinearRegressor regressor = new SimpleLinearRegressor();
-        regressor.initialize(bias, x_train, y_train);
-
-        for (int i = 0; i < epochs; i++) {
-            regressor.forwardPass();    // Forward pass
-            double loss = regressor.squaredError();   // Compute Loss
-            System.out.println("Epoch: " + (i+1) + "\tLoss: " + loss);
-            regressor.simpleGradient(); // Compute gradient, and new weight
-        }
-
-        double weight = regressor.fetchWeights();
-        System.out.println("The Final Equation:");
-        System.out.println("y = " + weight + " * x + " + bias);
-    }
+    
 }
