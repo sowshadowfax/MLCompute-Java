@@ -1,4 +1,4 @@
-package ANNCompute;
+package MLCompute;
 import java.util.Random;
 import java.math.*;
 
@@ -19,15 +19,64 @@ public class LinearRegressor {
         // Initializes the weights randomly and assigns bias
         public void initialize(double b, double[][] x, double[] y, double lr) {
             Random rand = new Random();
+
+            try {
             this.w = new double[x[0].length];
-            for (int i = 0; i < this.w.length; i++)
-                this.w[i] = rand.nextDouble();
+            } catch (Exception e) {
+                System.out.println(e);
+                System.out.println("Caught Error while initializing weights in LinearRegressor");
+                return;
+            }
+
+            try {
+                for (int i = 0; i < this.w.length; i++)
+                    this.w[i] = rand.nextDouble();
+            } catch(Exception e){
+                System.out.println(e);
+                System.out.println("Caught Error while allocating weights in LinearRegressor");
+                return;
+            }
+
+            try {
             this.b = b;
+            } catch (Exception e) {
+                System.out.println(e);
+                System.out.println("Caught Error while initializing bias in LinearRegressor");
+                return;
+            }
+
+            try {
             this.x = new double[x.length][x[0].length];
+            } catch (Exception e) {
+                System.out.println(e);
+                System.out.println("Caught Error while initializing x in LinearRegressor");
+                return;
+            }
+
+            try {
             for(int i = 0; i < x.length; i++)
                 this.x[i] = x[i];
+            } catch (Exception e) {
+                System.out.println(e);
+                System.out.println("Caught Error while allocating x in LinearRegressor");
+                return;
+            }
+
+            try {
             this.y = y;
+            } catch (Exception e) {
+                System.out.println(e);
+                System.out.println("Caught Error while initializing y in LinearRegressor");
+                return;
+            }
+
+            try {
             this.lr = lr;
+            } catch (Exception e) {
+                System.out.println(e);
+                System.out.println("Caught Error while initializing learning rate in LinearRegressor");
+                return;
+            }
             this.y_pred = new double[y.length];
         }
     

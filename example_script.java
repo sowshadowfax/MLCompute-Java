@@ -1,15 +1,15 @@
-import ANNCompute.*;
+import MLCompute.*;
 
-public class test {
+public class example_script {
     public static void main(String[] args) {
         double[] x = {1, 2, 3, 4, 5};
         double[] y = {2, 4, 6, 8, 10};
         double b = 0.0;
         double lr = 0.01;
 
-        double epochs = 5;
+        double epochs = 20;
 
-        /*
+        
         // Demo 1: Simple Linear Regressor
         SimpleLinearRegressor slr = new SimpleLinearRegressor();
         slr.initialize(b, x, y, lr);
@@ -25,7 +25,7 @@ public class test {
         double[] y_t = slr.predict(x_t);
 
         for (int i = 0; i < x_t.length; i++)
-            System.out.println("Predicted: " + y_t[i]); */
+            System.out.println("Predicted: " + y_t[i]);
         
         /*
         // Demo 2: Multi Linear Regressor
@@ -69,6 +69,7 @@ public class test {
         for (int i = 0; i < x_t3.length; i++)
             System.out.println("Predicted: " + y_t3[i]); */
         
+        /*
         // Demo 4: Simple Linear Classifier
         double[] x4 = {1, 2, 3, 4, 5};
         double[] y4 = {0, 0, 1, 1, 1};
@@ -87,7 +88,7 @@ public class test {
         int[] y_t4 = slc.predict(x_t4);
 
         for (int i = 0; i < x_t4.length; i++)
-            System.out.println("Predicted: " + y_t4[i]);
+            System.out.println("Predicted: " + y_t4[i]); */
         
     }
 }

@@ -1,4 +1,4 @@
-package ANNCompute;
+package MLCompute;
 
 import java.util.Random;
 
