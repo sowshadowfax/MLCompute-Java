@@ -1,0 +1,3 @@
+MLCompute: A Machine Learning Framework in Java
+
+We propose the development of a Java-centric Machine Learning framework characterized by the meticulous implementation of various regression algorithms. These algorithms encompass single-weight regression, multiple-weight regression, and logistic regression, augmented by the incorporation of a straightforward classifier. Throughout the development process, we prioritize the integration of robust exception handling mechanisms, resulting in a polished and user-ready package. This initiative serves as a demonstration of our expertise in the Java language, highlighting diverse capabilities inherent in Object-Oriented Programming languages.
